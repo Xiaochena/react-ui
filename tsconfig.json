@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    /* alias */
+    "paths": {
+      "my-com": ["src/index.tsx"],
+      "my-com/es/*": ["src/*"]
+    },
+    "jsx": "react-jsx",
+    "target": "es2016",
+    /* Modules */
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true, // 禁止对同一个文件的不一致的引用。(即强制文件引入时区分大小写)
+    "strict": true,
+    "declaration": true,
+    "declarationDir": "lib",
+    "skipLibCheck": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "lib", "es"]
+}

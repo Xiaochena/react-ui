@@ -1,0 +1,11 @@
+{
+  "presets": [
+    ["@babel/preset-env", { "modules": "commonjs", "loose": true }],
+    ["@babel/preset-react", { "runtime": "automatic" }],
+    "@babel/preset-typescript"
+  ],
+  "plugins": ["@babel/plugin-transform-runtime"],
+  "env": {
+    "esm": { "presets": [["@babel/env", { "modules": false }]] }
+  }
+}
