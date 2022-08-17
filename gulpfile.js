@@ -1,7 +1,6 @@
 const gulp = require("gulp");
 const babel = require("gulp-babel");
 const rimraf = require("rimraf");
-const ts = require("gulp-typescript");
 
 const config = {
   cjs: {
@@ -20,20 +19,6 @@ function cleanFile(cb) {
   rimraf.sync(config.cjs.output);
   rimraf.sync(config.esm.output);
   cb();
-}
-
-// 生成类型文件
-function declaration() {
-  const tsProject = ts.createProject("tsconfig.json", {
-    emitDeclarationOnly: true,
-  });
-
-  const tsResult = gulp
-    .src(config.enter)
-    .pipe(tsProject())
-    .pipe(gulp.dest(config.esm.output));
-
-  return tsResult.pipe(gulp.dest(config.cjs.output));
 }
 
 // 编译
@@ -58,7 +43,7 @@ function compileESM() {
 const buildScripts = gulp.series(compileCJS, compileESM);
 
 // 先清空目录后 整体并行执行任务 编译、生成类型文件
-const build = gulp.parallel(buildScripts, declaration);
+const build = gulp.parallel(buildScripts);
 const clean = gulp.series(cleanFile);
 
 exports.build = build;
