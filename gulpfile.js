@@ -1,6 +1,9 @@
-const gulp = require("gulp");
-const babel = require("gulp-babel");
-const rimraf = require("rimraf");
+import gulp from "gulp";
+import babel from "gulp-babel";
+import rimraf from "rimraf";
+// import less from "gulp-less";
+// import autoprefixer from "gulp-autoprefixer";
+// import cssnano from "gulp-cssnano";
 
 const config = {
   cjs: {
@@ -11,6 +14,7 @@ const config = {
     output: "es",
     env: "esm",
   },
+  styles: "src/**/*.{less,css}",
   enter: ["src/**/*.{ts,tsx}", "!src/**/demo/**/*"],
 };
 
@@ -20,6 +24,31 @@ function cleanFile(cb) {
   rimraf.sync(config.esm.output);
   cb();
 }
+
+/**
+ * 拷贝less文件
+ */
+function copyLess() {
+  return gulp
+    .src(config.styles)
+    .pipe(gulp.dest(config.cjs.output))
+    .pipe(gulp.dest(config.esm.output));
+}
+
+// /**
+//  * 生成css文件
+//  */
+// function less2css() {
+//   return (
+//     gulp
+//       .src(config.styles)
+//       .pipe(less()) // 处理less文件
+//       // .pipe(autoprefixer()) // 根据browserslistrc增加前缀
+//       // .pipe(cssnano({ zindex: false, reduceIdents: false })) // 压缩
+//       .pipe(gulp.dest(config.cjs.output))
+//       .pipe(gulp.dest(config.esm.output))
+//   );
+// }
 
 // 编译
 function compileScripts(babelEnv, output) {
@@ -43,10 +72,9 @@ function compileESM() {
 const buildScripts = gulp.series(compileCJS, compileESM);
 
 // 先清空目录后 整体并行执行任务 编译、生成类型文件
-const build = gulp.parallel(buildScripts);
+const build = gulp.parallel(buildScripts, copyLess);
 const clean = gulp.series(cleanFile);
 
-exports.build = build;
-exports.clean = clean;
+export { build, clean };
 
-exports.default = build;
+export default build;
