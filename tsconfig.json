@@ -3,8 +3,8 @@
     "baseUrl": "./",
     /* alias */
     "paths": {
-      "my-com": ["src/index.tsx"],
-      "my-com/es/*": ["src/*"]
+      "react-ui": ["src/index.tsx"],
+      "react-ui/es/*": ["src/*"]
     },
     "jsx": "react-jsx",
     "target": "es2016",

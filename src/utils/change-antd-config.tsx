@@ -1,6 +1,6 @@
 import React from "react";
 import { ConfigProvider } from "antd";
-import "./chen.css";
+import "./react-ui.css";
 
 /** 高阶函数、用于链接 ConfigProvider */
 export default function changeAntdConfig<P extends object>(
