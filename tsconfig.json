@@ -3,7 +3,7 @@
     "baseUrl": "./",
     /* alias */
     "paths": {
-      "react-ui": ["src/index.tsx"],
+      "react-ui": ["src/index.ts"],
       "react-ui/es/*": ["src/*"]
     },
     "jsx": "react-jsx",
@@ -15,7 +15,7 @@
     "forceConsistentCasingInFileNames": true, // 禁止对同一个文件的不一致的引用。(即强制文件引入时区分大小写)
     "strict": true,
     "declaration": true,
-    "declarationDir": "lib",
+    "declarationDir": "dist",
     "skipLibCheck": true
   },
   "include": ["src"],
