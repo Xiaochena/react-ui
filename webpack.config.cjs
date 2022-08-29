@@ -10,9 +10,18 @@ module.exports = {
     filename: "index.js",
     path: path.resolve(__dirname, "dist"),
     libraryTarget: "module",
+    clean: true,
   },
   module: {
     rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.less$/i,
+        use: ["style-loader", "css-loader", "less-loader"],
+      },
       {
         test: /\.(js|jsx|ts|tsx)$/,
         exclude: /(node_modules|bower_components)/,

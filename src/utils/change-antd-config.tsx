@@ -6,11 +6,11 @@ import "./react-ui.css";
 export default function changeAntdConfig<P extends object>(
   Node: React.FC<P>
 ): React.FC<P> {
-  ConfigProvider.config({ prefixCls: "chen" });
+  ConfigProvider.config({ prefixCls: "react-ui" });
 
   return (props) => {
     return (
-      <ConfigProvider prefixCls="chen">
+      <ConfigProvider prefixCls="react-ui">
         <Node {...props} />
       </ConfigProvider>
     );
