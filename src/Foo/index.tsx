@@ -1,7 +1,7 @@
 import { CSSProperties, FC, PropsWithChildren } from "react";
 import { Button } from "antd";
 
-import { FooBody } from "./styled";
+import { FooBody, Describe } from "./styled";
 import changeAntdConfig from "../utils/change-antd-config";
 
 const Foo: FC<
@@ -10,7 +10,7 @@ const Foo: FC<
   return (
     <FooBody style={style}>
       <div>{children ?? "Hello World"}</div>
-      <div>{describe}</div>
+      <Describe>{describe}</Describe>
       <Button>Click Me</Button>
     </FooBody>
   );
